@@ -1,0 +1,63 @@
+.topFixedBanner{
+    background-image: url("../images/background.jpg");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.topBannerOverly{
+    position: absolute;
+    min-height: 500px;
+    width: 100%;
+    background:rgba(0, 0, 0, .7);
+}
+.topContent{
+    margin-top: 10rem;
+}
+.topTitle{
+    font-family: 'Montserreat', sans-serif;
+    font-weight: 700;
+    color:#ffffff;
+    font-size: 48px;
+}
+.topSubTitle{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color:#ffffff;
+    font-size: 22px;
+}
+
+/* Servicessection css */
+.serviceMainTitle{
+    color:#0073E6;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    font-family: 'Montserreat', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+}
+.serviceName{
+    margin-top: 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+}
+.serviceDescription{
+    color: #7f7f7f;
+    margin-top: 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: justify;
+}
+.serviceCard{
+    margin:5px 5px 5px 5px;
+    height:27rem;
+    padding:60px 30px;
+    box-shadow: 0 0 4px rgba(0, 115, 230, .2);
+}
+.serviceCard:hover{
+    box-shadow: 0 0 8px rgba(0, 115, 230, .2);
+}
