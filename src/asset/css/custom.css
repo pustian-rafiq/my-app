@@ -106,3 +106,59 @@
     color:#000;
     font-size: 14px;
 }
+
+/* Summary Banner Section style */
+.summarySection{
+    margin-top:5rem;
+}
+.summaryBanner{
+    background-image: url("../images/background.jpg");
+    min-height: 350px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.summaryBannerOverly{
+    position: absolute;
+    min-height: 350px;
+    width: 100%;
+    background:rgba(0, 0, 0, .7);
+}
+.countNumber{
+    font-family: 'Montserreat', sans-serif;
+    font-weight: 600;
+    color:#ffffff;
+    font-size: 48px;
+}
+.countTitle{
+    font-family: 'Montserreat', sans-serif;
+    font-weight: 400;
+    color:#ffffff;
+    font-size: 24px;
+}
+.countSection{
+    margin-top: 16%;
+}
+.cardTitle{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color:#000000;
+    font-size: 24px;
+}
+.cardSUbTitle{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    color:#000000;
+    font-size: 14px;
+}
+.iconBullet{
+    color:#0073E6;
+    font-size: 16px;
+}
+.workCard{
+    margin-top: 14%;
+    padding:10px;
+    border-radius: 2px;
+}
