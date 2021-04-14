@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import { Fragment } from 'react'
-import '../../asset/css/custom.css'
-import '../../asset/css/bootstrap.min.css'
 import { Container,Row,Col } from 'react-bootstrap'
 import development from '../../asset/images/development.png'
 import mobile from '../../asset/images/mobile.png'

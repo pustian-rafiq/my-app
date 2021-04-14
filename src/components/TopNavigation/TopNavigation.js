@@ -1,3 +1,5 @@
+import '../../asset/css/custom.css'
+import '../../asset/css/bootstrap.min.css'
 import React, { Component,Fragment } from 'react'
 import { Navbar,Nav } from 'react-bootstrap' 
 import beforeScroll  from '../../asset/images/beforescroll.png'
