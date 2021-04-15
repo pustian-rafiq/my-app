@@ -162,3 +162,28 @@
     padding:10px;
     border-radius: 2px;
 }
+
+
+/* Recent Project Section style */
+
+.projectCard{
+     border-radius: 2px;
+     /* react bootstrap er kono kisu override korte gele !important use korte hoi */
+     border:none !important; 
+     margin:2px;
+     box-shadow: 0 0 4px rgba(0, 115, 230, .2);
+}
+.projectCard:hover{
+    box-shadow: 0 0 8px rgba(0, 115, 230, .2);
+}
+.projectCardTitle{
+    font-family: 'Montserreat', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+ 
+}
+.projectCardDescription{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
