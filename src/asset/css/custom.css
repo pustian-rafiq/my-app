@@ -170,7 +170,7 @@
      border-radius: 2px;
      /* react bootstrap er kono kisu override korte gele !important use korte hoi */
      border:none !important; 
-     margin:2px;
+     margin:2px 2px 2px 2px;
      box-shadow: 0 0 4px rgba(0, 115, 230, .2);
 }
 .projectCard:hover{
@@ -186,4 +186,31 @@
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
     font-size: 15px;
+}
+
+/* Our Courses Section style */
+.courseImg{
+    width:100%;
+}
+.courseTitle{
+    font-family: 'Montserreat', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+ 
+}
+.courseDescription{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+.courseDetails{
+    text-decoration: none;
+    color:#0073E6;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.courseDetails:hover{
+    text-decoration: none;
 }
