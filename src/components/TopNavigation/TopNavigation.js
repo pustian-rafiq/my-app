@@ -11,16 +11,17 @@ export class TopNavigation extends Component {
       this.state = {
           navBarTitle: "navTitle",
           navBarLogo: [beforeScroll],
-          navBackgroundColor: "navBackground",
-          navItem: "navItem"
+          navBackgroundColor: "navBackground",//css class
+          navItem: "navItem",//css class
+          navVariant: "dark"
       }
   }
 
   onScroll=() =>{
       if(window.scrollY > 100){
-          this.setState({navBarTitle: 'navTitleScroll', navBarLogo: [afterScroll], navBackgroundColor: 'navBackgroundScroll', navItem: 'navItemScroll'});
+          this.setState({navBarTitle: 'navTitleScroll', navBarLogo: [afterScroll], navBackgroundColor: 'navBackgroundScroll', navItem: 'navItemScroll', navVariant: 'light'});
       }else if(window.scrollY < 100){
-        this.setState({navBarTitle: 'navTitle', navBarLogo: [beforeScroll],  navBackgroundColor: 'navBackground', navItem: 'navItem'});
+        this.setState({navBarTitle: 'navTitle', navBarLogo: [beforeScroll],  navBackgroundColor: 'navBackground', navItem: 'navItem',navVariant: 'dark'});
       }
   }
 
@@ -30,7 +31,7 @@ export class TopNavigation extends Component {
     render() {
         return (
             <Fragment>
-                <Navbar className={this.state.navBackgroundColor} fixed="top" collapseOnSelect expand="lg"   variant="dark">
+                <Navbar  variant={this.state.navVariant} className={this.state.navBackgroundColor} fixed="top" collapseOnSelect expand="lg"  >
                     <Navbar.Brand className={this.state.navBarTitle} href="#home"><img className="NavLogo" src={this.state.navBarLogo} alt="Logo"/> Rafiqul Islam</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
