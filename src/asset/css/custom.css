@@ -326,3 +326,9 @@
     color:#ffffff;
     font-size: 28px;
 }
+/* Contact section Override form control */
+.form-control:focus{
+    border-radius:2px !important;
+    color:#0073E6 !important;
+    box-shadow: 0 0 4px 0 rgba(0,115,230, 0.2) !important;
+}
