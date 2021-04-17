@@ -83,7 +83,7 @@
     font-weight: 600;
 }
 .serviceDescription{
-    color: #7f7f7f;
+    color: #2B2B2B;
     margin-top: 1rem;
     font-family: 'Raleway', sans-serif;
     font-size: 14px;
@@ -268,7 +268,7 @@
 .footerLink{
 
     text-decoration: none;
-    color: #7e7e7e;
+    color: #2B2B2B;
   
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
@@ -299,4 +299,30 @@
     text-decoration: none;
     color: #2B2B2B;
      
+}
+
+/* Top Page--About Me style */
+.topFixedPage{
+    background-image: url("../images/background.jpg");
+    min-height: 280px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.topPageOverly{
+    position: absolute;
+    min-height: 280px;
+    width: 100%;
+    background:rgba(0, 0, 0, .7);
+}
+.topContent{
+    margin-top: 8rem;
+}
+.topSubTitle{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    color:#ffffff;
+    font-size: 28px;
 }
