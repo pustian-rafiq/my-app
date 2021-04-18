@@ -25,7 +25,7 @@
 .navItem{
     font-family: 'Montserreat', sans-serif;
     font-weight: 500;
-    color:#ffffff !important;
+    color:#ffffff ; /* ekhane !important use korle activeStyle kaj korbena*/
     font-size: 18px;
 }
 .navItemScroll{
