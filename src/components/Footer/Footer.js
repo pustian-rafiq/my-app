@@ -27,9 +27,9 @@ export default class Footer extends Component {
 
                         <Col lg={3} md={6} sm={12} className="p-5  text-justify">
                         <h1 className="serviceMainTitle">Location</h1>
-                           <a className="footerLink" href="#1">About Me</a><br/>
-                           <a className="footerLink" href="#1">My Resume</a><br/>
-                           <a className="footerLink" href="#1">Contact</a>
+                           <Link className="footerLink" to="/about">About Me</Link><br/>
+                           <Link className="footerLink" to="/portfolio">My Resume</Link><br/>
+                           <Link className="footerLink" to="/contact">Contact</Link>
                            
                         </Col>
 
@@ -37,7 +37,7 @@ export default class Footer extends Component {
                             <h1 className="serviceMainTitle">Legal</h1>
                             <Link className="footerLink" to="/refund">Refund Policy</Link><br/>
                             <Link className="footerLink" to="/terms">Terms And Condition</Link><br/>
-                            <Link className="footerLink" to="privacy">Privacy Policy</Link>
+                            <Link className="footerLink" to="/privacy">Privacy Policy</Link>
                         </Col>
                     </Row>
                 </Container>
