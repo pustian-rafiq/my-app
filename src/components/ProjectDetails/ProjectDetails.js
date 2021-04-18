@@ -1,6 +1,7 @@
 import React, { Component,Fragment } from 'react'
-import { Container,Row,Col} from 'react-bootstrap'
+import { Container,Row,Col,Button} from 'react-bootstrap'
 import laptop from '../../asset/images/laptop.png'
+import {Link} from 'react-router-dom'
 
 export default class ProjectDetails extends Component {
     render() {
@@ -27,7 +28,7 @@ export default class ProjectDetails extends Component {
                                 <li>This is the  best laptop in the market</li>
                                 <li>This is the  best laptop in the market</li>
                             </ul>
-                        
+                            <Button variant="primary"><Link className="link-style"  to="/project-details">Details</Link></Button>
                         </Col>
                     </Row>
                     
