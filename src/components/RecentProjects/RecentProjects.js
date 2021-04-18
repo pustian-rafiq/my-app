@@ -1,6 +1,7 @@
 import React, { Component,Fragment } from 'react'
 import  { Container,Row,Col,Card,Button } from 'react-bootstrap'
 import laptop from '../../asset/images/laptop.png'
+import {Link} from 'react-router-dom'
 
 export default class RecentProjects extends Component {
     render() {
@@ -18,7 +19,7 @@ export default class RecentProjects extends Component {
                                     Some quick example text to build on the card title and make up the bulk of
                                     the card's content.
                                     </Card.Text>
-                                    <Button variant="primary">Details</Button>
+                                    <Button variant="primary"><Link to="/project-details">Details</Link></Button>
                                 </Card.Body>
                              </Card>
                         </Col>
@@ -32,7 +33,7 @@ export default class RecentProjects extends Component {
                                     Some quick example text to build on the card title and make up the bulk of
                                     the card's content.
                                     </Card.Text>
-                                    <Button variant="primary">Details</Button>
+                                    <Button variant="primary"><Link to="/project-details">Details</Link></Button>
                                 </Card.Body>
                              </Card>
                         </Col>
@@ -46,7 +47,7 @@ export default class RecentProjects extends Component {
                                     Some quick example text to build on the card title and make up the bulk of
                                     the card's content.
                                     </Card.Text>
-                                    <Button variant="primary">Details</Button>
+                                    <Button variant="primary"><Link to="/project-details">Details</Link></Button>
                                 </Card.Body>
                              </Card>
                         </Col>

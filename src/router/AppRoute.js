@@ -9,6 +9,7 @@ import AboutPage from '../pages/AboutPage';
 import RefundPolicy from '../pages/RefundPolicy';
 import TermPage from '../pages/TermPage';
 import PrivacyPage from '../pages/PrivacyPage';
+import ProjectDetailsPage from '../pages/ProjectDetailsPage';
 
 
 export default class AppRoute extends Component {
@@ -25,6 +26,7 @@ export default class AppRoute extends Component {
                     <Route exact path="/refund" component={RefundPolicy}/>
                     <Route exact path="/terms" component={TermPage}/>
                     <Route exact path="/privacy" component={PrivacyPage}/>
+                    <Route exact path="/project-details" component={ProjectDetailsPage}/>
 
                 </Switch>
                 
