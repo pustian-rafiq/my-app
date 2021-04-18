@@ -1,8 +1,9 @@
 import React, { Component,Fragment } from 'react'
 import { Container,Row,Col } from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 import {faFacebook, faYoutube} from '@fortawesome/free-brands-svg-icons'
+import {Link} from 'react-router-dom'
 
 export default class Footer extends Component {
     render() {
@@ -34,9 +35,9 @@ export default class Footer extends Component {
 
                         <Col lg={3} md={6} sm={12} className="p-5 text-justify">
                             <h1 className="serviceMainTitle">Legal</h1>
-                            <a className="footerLink" href="#1">Refund Policy</a><br/>
-                            <a className="footerLink" href="#1">Terms And Condition</a><br/>
-                            <a className="footerLink" href="#1">Privacy Policy</a>
+                            <Link className="footerLink" to="/refund">Refund Policy</Link><br/>
+                            <Link className="footerLink" href="#1">Terms And Condition</Link><br/>
+                            <Link className="footerLink" href="#1">Privacy Policy</Link>
                         </Col>
                     </Row>
                 </Container>
