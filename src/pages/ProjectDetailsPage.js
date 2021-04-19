@@ -5,6 +5,10 @@ import Footer from '../components/Footer/Footer';
 import ProjectDetails from '../components/ProjectDetails/ProjectDetails';
 
 export default class ProjectDetailsPage extends Component {
+        // This is used for loadin any page from the top when we click the page
+        componentDidMount(){
+            window.scroll(0,0);
+        }
     render() {
         return (
             <Fragment>

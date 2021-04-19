@@ -12,6 +12,10 @@ import Footer from '../components/Footer/Footer';
 
 
 export class HomePage extends Component {
+        // This is used for loadin any page from the top when we click the page
+        componentDidMount(){
+            window.scroll(0,0);
+        }
     render() {
         return (
             <Fragment>

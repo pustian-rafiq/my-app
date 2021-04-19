@@ -37,7 +37,7 @@ export class TopNavigation extends Component {
                 <title>{this.props.title}</title>
                 {/* <title>{this.state.pageTitle}</title> */}
                 <Navbar  variant={this.state.navVariant} className={this.state.navBackgroundColor} fixed="top" collapseOnSelect expand="lg"  >
-                    <Navbar.Brand className={this.state.navBarTitle} href="#home"><img className="NavLogo" src={this.state.navBarLogo} alt="Logo"/> Rafiqul Islam</Navbar.Brand>
+                    <Navbar.Brand> <NavLink  className={this.state.navBarTitle} to="/"> <img className="NavLogo" src={this.state.navBarLogo} alt="Logo"/> Rafiqul Islam</NavLink></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
