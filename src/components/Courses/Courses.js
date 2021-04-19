@@ -1,6 +1,7 @@
 import React, { Component,Fragment } from 'react'
 import  { Container,Row,Col } from 'react-bootstrap'
 import courseImg from '../../asset/images/courseimg3.jpg'
+import {Link} from 'react-router-dom'
 
 export default class Courses extends Component {
     render() {
@@ -18,7 +19,7 @@ export default class Courses extends Component {
                                 <Col lg={6} md={6} sm={12}>
                                 <h4 className="text-justify courseTitle">Web Development</h4>
                                 <p className="text-justify courseDescription">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.</p>
-                                <a className="float-left courseDetails" href="#1" >Details</a>
+                                <Link className="float-left courseDetails" to="/course-details" >Details</Link>
                                 </Col>
                             </Row>
 
@@ -32,7 +33,7 @@ export default class Courses extends Component {
                                 <Col lg={6} md={6} sm={12}>
                                     <h4 className="text-justify courseTitle">Web Development</h4>
                                     <p className="text-justify courseDescription">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.</p>
-                                    <a className="float-left courseDetails" href="#1" >Details</a>
+                                    <Link className="float-left courseDetails" to="/course-details" >Details</Link>
                                 </Col>
                             </Row>
 
@@ -46,7 +47,7 @@ export default class Courses extends Component {
                                 <Col lg={6} md={6} sm={12}>
                                     <h4 className="text-justify courseTitle">Web Development</h4>
                                     <p className="text-justify courseDescription">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.</p>
-                                    <a className="float-left courseDetails" href="#1" >Details</a>
+                                    <Link className="float-left courseDetails" to="/course-details" >Details</Link>
                                 </Col>
                             </Row>
 
@@ -61,7 +62,7 @@ export default class Courses extends Component {
                                 <Col lg={6} md={6} sm={12}>
                                     <h4 className="text-justify courseTitle">Web Development</h4>
                                     <p className="text-justify courseDescription">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs.</p>
-                                    <a className="float-left courseDetails" href="#1" >Details</a>
+                                    <Link className="float-left courseDetails" to="/course-details" >Details</Link>
                                 </Col>
                             </Row>
 
