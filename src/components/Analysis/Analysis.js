@@ -4,19 +4,24 @@ import { Container,Row,Col} from 'react-bootstrap'
 import { Bar, BarChart, ResponsiveContainer, XAxis, Tooltip  } from 'recharts';
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
-
+import ReactHtmlParser from 'react-html-parser';
 class Analysis extends Component {
     constructor(){
         super();
         this.state = {
-            barChartData:[]
+            barChartData:[],
+            techDescription:"...."
         }
     }
 
     componentDidMount(){
         RestClient.GetRequest(AppUrl.ChartData).then(result =>{
             this.setState({barChartData: result});
-        })
+        });
+
+        RestClient.GetRequest(AppUrl.TechDescription).then(result =>{
+            this.setState({techDescription: result[0]['tech_description']});
+        });
     }
 
     render() {
@@ -39,10 +44,7 @@ class Analysis extends Component {
                       </Col>
 
                       <Col lg={6} md={12} sm={12}>
-                      <p className="text-justify analysisDescription">Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content.Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content.Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content.
-                      Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content.Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content.Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content.
-                       
-                      </p>
+                      <p className="text-justify analysisDescription">{ ReactHtmlParser(this.state.techDescription) } </p>
                       </Col>
                   </Row>
 
