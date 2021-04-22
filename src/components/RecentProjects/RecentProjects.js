@@ -1,6 +1,6 @@
 import React, { Component,Fragment } from 'react'
 import  { Container,Row,Col,Card,Button } from 'react-bootstrap'
-import laptop from '../../asset/images/laptop.png'
+// import laptop from '../../asset/images/laptop.png'
 import {Link} from 'react-router-dom'
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
