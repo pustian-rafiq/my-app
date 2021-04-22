@@ -4,9 +4,41 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Container,Row,Col } from 'react-bootstrap'
 import rafiq from '../../asset/images/rafiq.jpg'
+import RestClient from '../../RestAPI/RestClient';
+import AppUrl from '../../RestAPI/AppUrl';
 
 export default class ClientReview extends Component {
+
+  constructor(){
+    super();
+    this.state ={
+      clientData: []
+    }
+}
+    componentDidMount(){
+        RestClient.GetRequest(AppUrl.ClientReview).then(result =>{
+            this.setState({clientData: result});
+        })
+    }
+
     render() {
+
+      
+      const myList = this.state.clientData;
+      const clientDataView = myList.map(myList=>{
+
+           return   <div>
+                      <Row  className="text-center justify-content-center">
+                          <Col lg={6} md={6} sm={12}>
+                              <img className="clientImg" src={myList.client_img} alt="Client Logo"/>
+                              <h1  className="serviceName">{myList.client_title}</h1>
+                              <p className="serviceDescription text-center">{myList.client_description}</p>
+                          </Col>
+
+                      </Row>
+                  </div>
+       });
+
         var settings = {
             autoplay:true,
             autoplaySpeed:3000,
@@ -51,38 +83,8 @@ export default class ClientReview extends Component {
                 <Container className="text-center">
                 <h1 className="serviceMainTitle">CLIENT SAYS</h1>
                     <Slider {...settings}>
-                        <div>
-                            <Row className="text-center justify-content-center">
-                                <Col lg={6} md={6} sm={12}>
-                                    <img className="clientImg" src={rafiq} alt="Client Logo"/>
-                                    <h1  className="serviceName">Web Development</h1>
-                                    <p className="serviceDescription text-center">Carousels don’t automatically normalize slide dimensions.Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content.</p>
-                                </Col>
-
-                            </Row>
-                        </div>
-
-                        <div>
-                            <Row className="text-center justify-content-center">
-                                <Col lg={6} md={6} sm={12}>
-                                    <img className="clientImg" src={rafiq} alt="Client Logo"/>
-                                    <h1  className="serviceName">Web Development</h1>
-                                    <p className="serviceDescription text-center">Carousels don’t automatically normalize slide dimensions.Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content.</p>
-                                </Col>
-
-                            </Row>
-                        </div>
-
-                        <div>
-                            <Row  className="text-center justify-content-center">
-                                <Col lg={6} md={6} sm={12}>
-                                    <img className="clientImg" src={rafiq} alt="Client Logo"/>
-                                    <h1  className="serviceName">Web Development</h1>
-                                    <p className="serviceDescription text-center">Carousels don’t automatically normalize slide dimensions.Carousels don’t automatically normalize slide dimensions. As such, you may need to use additional utilities or custom styles to appropriately size content.</p>
-                                </Col>
-
-                            </Row>
-                        </div>
+                       {clientDataView}
+                       
                     </Slider>
                 </Container>    
             </Fragment>
