@@ -23,8 +23,8 @@ class Serivces extends Component {
 
     render() {
 
-        const myList = this.state.servicesData;
-       const servicesDatView = myList.map(myList=>{
+       const myList = this.state.servicesData;
+       const servicesDataView = myList.map(myList=>{
 
             return <Col lg={4} md={6} sm={12}>
                             <div className="serviceCard text-center">
@@ -40,7 +40,7 @@ class Serivces extends Component {
                     <h1 className="serviceMainTitle">MY SERVICES</h1>
                     <Row>
                        
-                       {servicesDatView}
+                       {servicesDataView}
 
                     </Row>
 
