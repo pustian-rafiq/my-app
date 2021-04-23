@@ -12,7 +12,8 @@ class Serivces extends Component {
     constructor(){
         super();
         this.state ={
-            servicesData: []
+            servicesData: [],
+           
         }
     }
         componentDidMount(){

@@ -10,12 +10,17 @@ import {Player, BigPlayButton,ControlBar,
     TimeDivider,
     PlaybackRateMenuButton,
     VolumeMenuButton} from 'video-react'
+import RestClient from '../../RestAPI/RestClient';
+import AppUrl from '../../RestAPI/AppUrl';
+import ReactHtmlParser from 'react-html-parser';    
 class Video extends Component {
 
     constructor(){
         super();
         this.state={
-            show: false
+            show: false,
+            videoDescription:"",
+            videoUrl:""
         }
     }
 
@@ -24,6 +29,14 @@ class Video extends Component {
     }
     closeModal = ()=>{
         this.setState({show: false});
+    }
+    
+    componentDidMount(){
+        
+
+        RestClient.GetRequest(AppUrl.HomeVideo).then(result =>{
+            this.setState({videoDescription: result[0]['video_description'],videoUrl:result[0]['video_url']});
+        });
     }
 
     render() {
@@ -34,10 +47,7 @@ class Video extends Component {
                         <Col lg={12} md={12} sm={12}  className="videoCard">
                             <div>
                                 <p className="videoTitle">How I Do</p>
-                                <p  className="videoDescription"> Some quick example text to build on the card title and make up the bulk of
-                                    the card's content. Some quick example text to build on the card title and make up the bulk of
-                                    the card's content. Some quick example text to build on the card title and make up the bulk of
-                                    the card's content.</p>
+                                <p  className="videoDescription">  { ReactHtmlParser(this.state.videoDescription) }   </p>
                                 <p><FontAwesomeIcon className="playBtn" onClick={this.showModal} icon={faPlayCircle} /></p>
 
                             </div>
@@ -53,7 +63,7 @@ class Video extends Component {
                     </Modal.Header>
                     <Modal.Body>
                     <Player>
-                       <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+                       <source src=  { ReactHtmlParser(this.state.videoUrl) }  />
                        <BigPlayButton position="center" />
                        <ControlBar>
                         <ReplayControl seconds={10} order={1.1} />
