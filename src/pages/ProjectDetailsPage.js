@@ -10,7 +10,8 @@ export default class ProjectDetailsPage extends Component {
     constructor({match}){
         super();
         this.state ={
-            projectPassedID: match.params.projectID
+            projectPassedID: match.params.projectID,
+            projectPassedName: match.params.projectName
         }
     }
         // This is used for loadin any page from the top when we click the page
@@ -23,7 +24,7 @@ export default class ProjectDetailsPage extends Component {
         return (
             <Fragment>
                 <TopNavigation title="Project Details"/>
-                <PageTop pageTitle="Project Details" />
+                <PageTop pageTitle={this.state.projectPassedName} />
                 <ProjectDetails id={this.state.projectPassedID}/>
                 <Footer/>
             </Fragment>
