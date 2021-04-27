@@ -44,8 +44,8 @@ export default class Footer extends Component {
                     <Row>
                         <Col lg={3} md={6} sm={12} className="p-5  text-justify">
                            <h1 className="serviceMainTitle">Follow Me</h1>
-                           <a className="socialLink"  href="#1"><FontAwesomeIcon   icon={faFacebook} /> Facebook</a><br/>
-                           <a className="socialLink" href="#1"><FontAwesomeIcon icon={faYoutube} /> Youtube</a>
+                           <a className="socialLink" rel="noreferrer noopener" target="_blank"  href={"//"+this.state.facebook}><FontAwesomeIcon   icon={faFacebook} /> Facebook</a><br/>
+                           <a className="socialLink" rel="noreferrer noopener" target="_blank" href={"//"+this.state.youtube}><FontAwesomeIcon icon={faYoutube} /> Youtube</a>
                         </Col>
                             
 

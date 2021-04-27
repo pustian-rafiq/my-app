@@ -46,7 +46,7 @@ export default class ProjectDetails extends Component {
                             <h1 className="serviceName">{this.state.project_title}</h1>
                             <p className="serviceDescription">{this.state.project_description}</p>
                             { ReactHtmlParser(this.state.project_features) } 
-                            <Button variant="primary"><Link className="link-style"  to="/project-details">Live Preview</Link></Button>
+                            <Button target="_blank" href={"//"+this.state.live_preview_url} variant="primary">Live Preview</Button>
                         </Col>
                     </Row>
                     

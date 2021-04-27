@@ -8,35 +8,45 @@ import {Player, BigPlayButton,ControlBar,
     TimeDivider,
     PlaybackRateMenuButton,
     VolumeMenuButton} from 'video-react'
-    import ReactHtmlParser from 'react-html-parser';
-export default class CourseDetails extends Component {
+import ReactHtmlParser from 'react-html-parser';
+import RestClient from '../../RestAPI/RestClient';
+import AppUrl from '../../RestAPI/AppUrl';
 
+export default class CourseDetails extends Component {
     constructor(props){
-        super(props);
-       
+        super();
+        this.state={
+             myCoursePassedID:props.id,
+             long_title: "",
+             long_des: "",
+             short_desc: "",
+             total_lecture: "",
+             total_student: "",
+             skill_all: "",
+             course_link: "",
+             video_url: ""
+          
+        }
+    }
+
+
+    componentDidMount(){
+      
+        RestClient.GetRequest(AppUrl.CourseDetails+this.state.myCoursePassedID).then(result =>{
+            this.setState({
+                long_title: result[0]['long_title'],
+                long_des: result[0]['long_des'],
+                total_lecture: result[0]['total_lecture'],
+                total_student: result[0]['total_student'],
+                skill_all: result[0]['skill_all'],
+                course_link: result[0]['course_link'],
+                video_url: result[0]['video_url'],
+                short_desc: result[0]['short_desc']
+            });
+        })
     }
 
     render() {
-        let long_title ="";
-        let long_des ="";
-        let short_desc ="";
-        let total_lecture ="";
-        let total_student ="";
-        let skill_all ="";
-        let course_link ="";
-        let video_url="";
-
-        let CourseDetailsArray = this.props.courseData;
-        if(CourseDetailsArray.length===1){
-            long_title=CourseDetailsArray[0]['long_title'];
-            long_des=CourseDetailsArray[0]['long_des'];
-            total_lecture=CourseDetailsArray[0]['total_lecture'];
-            total_student=CourseDetailsArray[0]['total_student'];
-            skill_all=CourseDetailsArray[0]['skill_all'];
-            course_link=CourseDetailsArray[0]['course_link'];
-            video_url=CourseDetailsArray[0]['video_url'];
-            long_title=CourseDetailsArray[0]['long_title'];
-        }
         return (
         <Fragment>
             <Container fluid={true} className ="topFixedPage p-0">
@@ -44,14 +54,14 @@ export default class CourseDetails extends Component {
                     <Container className="topPageContentCourse">
                         <Row>
                         <Col lg={6} md={6} sm={12}>
-                                 <h3 className="courseFullTitle">{long_title}</h3>
-                                 <h5 className="courseSubTitle">Total Lecture:{total_lecture}</h5>
-                                 <h5 className="courseSubTitle">Total Students:{total_student}</h5>
+                                 <h3 className="courseFullTitle">{this.state.long_title}</h3>
+                                 <h5 className="courseSubTitle">Total Lecture:{this.state.total_lecture}</h5>
+                                 <h5 className="courseSubTitle">Total Students:{this.state.total_student}</h5>
                              
                              </Col>
 
                              <Col lg={6} md={6} sm={12}>
-                                 <p className="courseDeatilsDes">{long_des}</p>
+                                 <p className="courseDeatilsDes">{this.state.long_des}</p>
                              
                              </Col>
 
@@ -71,8 +81,8 @@ export default class CourseDetails extends Component {
                             <li  className="serviceDescription" >Some quick example text to build on the card title.</li>
                             <li  className="serviceDescription" >Some quick example text to build on the card title.</li>
                         </ul> */}
-                          { ReactHtmlParser(skill_all) } 
-                        <Button variant="primary">More Info</Button>
+                          { ReactHtmlParser(this.state.skill_all) } 
+                        <Button target="_blank" href={"//"+this.state.course_link} variant="primary">More Info</Button>
 
 
                     </Col>
@@ -80,7 +90,7 @@ export default class CourseDetails extends Component {
                     <Col lg={6} md={6} sm={12}>
                     <Player>
                         {/* "https://media.w3.org/2010/05/sintel/trailer_hd.mp4" */}
-                       <source src= {video_url}/>
+                       <source src="https://www.youtube.com/watch?v=668nUCeBHyY"/>
                        <BigPlayButton position="center" />
                        <ControlBar>
                         <ReplayControl seconds={10} order={1.1} />
