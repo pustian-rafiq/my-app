@@ -28,7 +28,7 @@ export default class AppRoute extends Component {
                     <Route exact path="/terms" component={TermPage}/>
                     <Route exact path="/privacy" component={PrivacyPage}/>
                     <Route exact path="/project-details/:projectID/:projectName" component={ProjectDetailsPage}/>
-                    <Route exact path="/course-details" component={CourseDetailsPage}/>
+                    <Route exact path="/course-details/:courseID" component={CourseDetailsPage}/>
 
                 </Switch>
                 

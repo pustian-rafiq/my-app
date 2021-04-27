@@ -34,7 +34,7 @@ export default class Courses extends Component {
                             <Col lg={6} md={6} sm={12}>
                             <h4 className="text-justify courseTitle">{myList.short_title}</h4>
                             <p className="text-justify courseDescription">{myList.short_des}</p>
-                            <Link className="float-left courseDetails" to="/course-details" >Details</Link>
+                            <Link className="float-left courseDetails" to={"/course-details/"+myList.id} >Details</Link>
                             </Col>
                         </Row>
 
