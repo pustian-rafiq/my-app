@@ -4,25 +4,29 @@ import  { Container,Row,Col } from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
+import Loader from '../Loader/Loader';
 
 export default class AllCourses extends Component {
     constructor(){
         super();
         this.state ={
-            courseData: []
+            courseData: [],
+            loading:true
         }
     }
         componentDidMount(){
             RestClient.GetRequest(AppUrl.AllCourse).then(result =>{
-                this.setState({courseData: result});
+                this.setState({courseData: result,loading:false});
             })
         }
 
 
     render() {
-
-        const myList = this.state.courseData;
-        const courseDataView = myList.map(myList=>{
+        if(this.state.loading===true){
+            return <Loader/>
+        }else{
+            const myList = this.state.courseData;
+            const courseDataView = myList.map(myList=>{
  
              return  <Col lg={6} md={12} sm={12}  className="p-2">
                         <Row>
@@ -55,5 +59,7 @@ export default class AllCourses extends Component {
            
        </Fragment>
         )
+       }
+        
     }
 }
