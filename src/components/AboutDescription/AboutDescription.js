@@ -3,13 +3,14 @@ import {Container,Row,Col } from "react-bootstrap";
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import ReactHtmlParser from 'react-html-parser';
-
+import Loader from '../Loader/Loader';
 class AboutDescription extends Component {
     constructor(){
         super();
         this.state = {
             
-            aboutDescription:"...."
+            aboutDescription:"",
+            loading:true
         }
     }
 
@@ -17,10 +18,13 @@ class AboutDescription extends Component {
         
 
         RestClient.GetRequest(AppUrl.FooterInformation).then(result =>{
-            this.setState({aboutDescription: result[0]['about']});
+            this.setState({aboutDescription: result[0]['about'],loading:false});
         });
     }
     render() {
+        if(this.state.loading===false){
+            return <Loader/>
+        }else{
         return (
             <Fragment>
                   <Container className="mt-5" >
@@ -36,6 +40,7 @@ class AboutDescription extends Component {
                  </Container>
             </Fragment>
         );
+        }
     }
 }
 

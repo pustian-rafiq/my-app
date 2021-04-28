@@ -6,7 +6,7 @@ import {faFacebook, faYoutube} from '@fortawesome/free-brands-svg-icons'
 import {Link} from 'react-router-dom'
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
- 
+import Loader from '../Loader/Loader';
 
 
 export default class Footer extends Component {
@@ -14,12 +14,14 @@ export default class Footer extends Component {
         super();
         this.state = {
             
-            address:"....",
-            email:"....",
-            phone:"....",
-            facebook:"....",
-            youtube:"....",
-            footer_credit:"...."
+            address:"",
+            email:"",
+            phone:"",
+            facebook:"",
+            youtube:"",
+            footer_credit:"",
+            loaderClass:"text-center",
+            mainDivClass:"d-none"
         }
     }
 
@@ -34,6 +36,8 @@ export default class Footer extends Component {
                 facebook: result[0]['facebook'],
                 youtube: result[0]['youtube'],
                 footer_credit: result[0]['footer_credit'],
+                loaderClass:"d-none",
+                mainDivClass:"p-5  text-justify"
             });
         });
     }
@@ -48,14 +52,20 @@ export default class Footer extends Component {
                            <a className="socialLink" rel="noreferrer noopener" target="_blank" href={"//"+this.state.youtube}><FontAwesomeIcon icon={faYoutube} /> Youtube</a>
                         </Col>
                             
+            {/* Load animation start here */}
+                        <Col lg={3} md={6} sm={12} className={this.state.loaderClass}>
+                             <h1 className="serviceMainTitle">Address</h1>
+                             <Loader/>
+                              
+                        </Col>
 
-                        <Col lg={3} md={6} sm={12} className="p-5  text-justify">
+                        <Col lg={3} md={6} sm={12}  className={this.state.mainDivClass}>
                              <h1 className="serviceMainTitle">Address</h1>
                              <p  className="serviceDescription">{this.state.address}</p>
                              <p className="serviceDescription"><FontAwesomeIcon icon={faEnvelope} /> {this.state.email}</p>
                              <p className="serviceDescription"><FontAwesomeIcon icon={faPhone} /> {this.state.phone}</p>
                         </Col>
-
+              {/* Load animation end here */}
                         <Col lg={3} md={6} sm={12} className="p-5  text-justify">
                         <h1 className="serviceMainTitle">Location</h1>
                            <Link className="footerLink" to="/about">About Me</Link><br/>

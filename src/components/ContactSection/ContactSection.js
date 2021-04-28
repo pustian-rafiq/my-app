@@ -4,15 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
- 
+import Loader from '../Loader/Loader';
+
 class ContactSection extends Component {
     constructor(){
         super();
         this.state = {
             
-            address:"....",
-            email:"....",
-            phone:"....",
+            address:"",
+            email:"",
+            phone:"",
+            loading:true
             
         }
     }
@@ -25,7 +27,7 @@ class ContactSection extends Component {
                 address: result[0]['address'],
                 email: result[0]['email'],
                 phone: result[0]['phone'],
-              
+                loading:false
             });
         });
     }
@@ -42,6 +44,9 @@ class ContactSection extends Component {
         })
     }
     render() {
+        if(this.state.loading===true){
+            return <Loader/>
+        }else{ 
         return (
             <Fragment>
                 <Container className="mt-5">
@@ -79,6 +84,7 @@ class ContactSection extends Component {
                 
             </Fragment>
         );
+    }  
     }
 }
 

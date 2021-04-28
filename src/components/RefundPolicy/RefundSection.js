@@ -3,12 +3,15 @@ import {Container,Row,Col } from "react-bootstrap";
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import ReactHtmlParser from 'react-html-parser';
+import Loader from '../Loader/Loader';
+
 export default class RefundSection extends Component {
     constructor(){
         super();
         this.state = {
             
-            refundDescription:"...."
+            refundDescription:"",
+            loading:true
         }
     }
 
@@ -16,10 +19,13 @@ export default class RefundSection extends Component {
         
 
         RestClient.GetRequest(AppUrl.FooterInformation).then(result =>{
-            this.setState({refundDescription: result[0]['refund']});
+            this.setState({refundDescription: result[0]['refund'], loading:false});
         });
     }
     render() {
+        if(this.state.loading===true){
+            return <Loader/>
+        }else{
         return (
             <Fragment>
                   <Container className="mt-5" >
@@ -40,6 +46,7 @@ export default class RefundSection extends Component {
                             </Row>
                  </Container>
             </Fragment>
-        )
+        );
+    }
     }
 }
