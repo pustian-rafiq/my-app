@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 export default class RecentProjects extends Component {
 
@@ -12,20 +13,27 @@ export default class RecentProjects extends Component {
         super();
         this.state ={
             projectsData: [],
-            loading:true
+            loading:true,
+            error:false
         }
     }
         componentDidMount(){
             RestClient.GetRequest(AppUrl.HomeProject).then(result =>{
+                if(result==null){
+                    this.setState({error:true, loading:false});
+                }else{
                 this.setState({projectsData: result, loading:false});
+                }
+            }).catch(error=>{
+                this.setState({error:true, loading:false});
             })
         }
 
 
     render() {
-        if(this.state.loading===true){
+        if(this.state.loading===true && this.state.error===false){
             return <Loader/>
-        }else{
+        }else if(this.state.loading===false && this.state.error===false){
             const myList = this.state.projectsData;
             const projectDataView = myList.map(myList=>{
     
@@ -55,6 +63,8 @@ export default class RecentProjects extends Component {
                     </Container>
                 </Fragment>
             );
+        }else if(this.state.error===true){
+            return <Error/>
         }  
     }
 }

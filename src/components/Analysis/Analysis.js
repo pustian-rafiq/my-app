@@ -6,6 +6,7 @@ import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import ReactHtmlParser from 'react-html-parser';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 class Analysis extends Component {
     constructor(){
@@ -13,24 +14,38 @@ class Analysis extends Component {
         this.state = {
             barChartData:[],
             techDescription:"",
-            loading:true
+            loading:true,
+            error:false
         }
     }
 
     componentDidMount(){
+      
         RestClient.GetRequest(AppUrl.ChartData).then(result =>{
+            if(result==null){
+                this.setState({error:true, loading:false});
+            }else{
             this.setState({barChartData: result,loading:false});
+            }
+        }).catch(error=>{
+            this.setState({error:true, loading:false});
         });
-
+       
         RestClient.GetRequest(AppUrl.TechDescription).then(result =>{
-            this.setState({techDescription: result[0]['tech_description']});
-        });
+            if(result==null){
+                this.setState({error:true, loading:false});
+            }else{
+               this.setState({techDescription: result[0]['tech_description']});
+            }
+        }).catch(error=>{
+            this.setState({error:true, loading:false});
+        })
     }
 
     render() {
-        if(this.state.loading===true){
+        if(this.state.loading===true && this.state.error===false){
             return <Loader/>
-        }else{
+        }else if(this.state.loading===false && this.state.error===false){
             var blue ="rgba(0,115,230, 0.8)";
             return (
                 <Fragment>
@@ -58,8 +73,10 @@ class Analysis extends Component {
                     
                 </Fragment>
             );
-        }  
-    }
+        }else if(this.state.error===true){
+        return <Error/>
+      }
+ }
 }
 
 export default Analysis;

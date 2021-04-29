@@ -5,26 +5,35 @@ import {Link} from 'react-router-dom'
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 export default class AllCourses extends Component {
     constructor(){
         super();
         this.state ={
             courseData: [],
-            loading:true
+            loading:true,
+            error:false
         }
     }
         componentDidMount(){
+           
             RestClient.GetRequest(AppUrl.AllCourse).then(result =>{
+                if(result==null){
+                    this.setState({error:true, loading:false});
+                }else{
                 this.setState({courseData: result,loading:false});
+                }
+            }).catch(error=>{
+                this.setState({error:true, loading:false});
             })
         }
 
 
     render() {
-        if(this.state.loading===true){
+        if(this.state.loading===true && this.state.error===false){
             return <Loader/>
-        }else{
+        }else if(this.state.loading===false && this.state.error===false){
             const myList = this.state.courseData;
             const courseDataView = myList.map(myList=>{
  
@@ -59,7 +68,9 @@ export default class AllCourses extends Component {
            
        </Fragment>
         )
-       }
+       }else if(this.state.error===true){
+        return <Error/>
+    }
         
     }
 }

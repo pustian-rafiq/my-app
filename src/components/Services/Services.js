@@ -6,25 +6,35 @@ import development from '../../asset/images/development.png'
 // import graphicslogo from '../../asset/images/graphicslogo.png'
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
- 
+import Error from '../Error/Error';
+
 class Serivces extends Component {
 
     constructor(){
         super();
         this.state ={
             servicesData: [],
+            error:false
             
            
         }
     }
         componentDidMount(){
             RestClient.GetRequest(AppUrl.ServicesData).then(result =>{
+                if(result==null){
+                    this.setState({error:true });
+                }else{
                 this.setState({servicesData: result});
+                }
+            }).catch(error=>{
+                this.setState({error:true });
             })
         }
 
     render() {
-       
+        if(this.state.error===true){
+            return <Error/>
+        }else{
         const myList = this.state.servicesData;
         const servicesDataView = myList.map(myList=>{
 
@@ -50,6 +60,7 @@ class Serivces extends Component {
                     
                 </Fragment>
             );
+        }
          
     }
 }

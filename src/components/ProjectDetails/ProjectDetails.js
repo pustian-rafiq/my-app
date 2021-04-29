@@ -5,6 +5,7 @@ import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import ReactHtmlParser from 'react-html-parser';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 export default class ProjectDetails extends Component {
     //Received id from parent componet-projectDetailsPage
@@ -17,12 +18,16 @@ export default class ProjectDetails extends Component {
             project_description:"",
             project_features:"",
             live_preview_url:"",
-            loading:true
+            loading:true,
+            error:false
 
         }
     }
     componentDidMount(){
         RestClient.GetRequest(AppUrl.ProjectDetails+this.state.myProjectID).then(result =>{
+            if(result==null){
+                this.setState({error:true,loading:false});
+            }else{
             this.setState({
                 image_two: result[0]['image_two'],
                 project_title: result[0]['project_title'],
@@ -31,12 +36,15 @@ export default class ProjectDetails extends Component {
                 live_preview_url: result[0]['live_preview_url'],
                 loading:false
             });
+        }
+        }).catch(error=>{
+            this.setState({error:true,loading:false});
         })
     }
     render() {
-        if(this.state.loading===true){
+        if(this.state.loading===true && this.state.error===false){
             return <Loader/>
-        }else{
+        }else if(this.state.loading===false && this.state.error===false){
             return (
                 <Fragment>
                     <Container>
@@ -59,6 +67,8 @@ export default class ProjectDetails extends Component {
                     
                 </Fragment>
             );
+        }else if(this.state.error===true){
+            return <Error/>
         }
     }
 }

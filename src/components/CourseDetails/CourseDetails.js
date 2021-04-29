@@ -12,6 +12,7 @@ import ReactHtmlParser from 'react-html-parser';
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 export default class CourseDetails extends Component {
     constructor(props){
@@ -26,7 +27,8 @@ export default class CourseDetails extends Component {
              skill_all: "",
              course_link: "",
              video_url: "",
-             loading:true
+             loading:true,
+             error:false
           
         }
     }
@@ -35,6 +37,9 @@ export default class CourseDetails extends Component {
     componentDidMount(){
       
         RestClient.GetRequest(AppUrl.CourseDetails+this.state.myCoursePassedID).then(result =>{
+            if(result==null){
+                this.setState({error:true, loading:false});
+            }else{
             this.setState({
                 long_title: result[0]['long_title'],
                 long_des: result[0]['long_des'],
@@ -46,13 +51,16 @@ export default class CourseDetails extends Component {
                 short_desc: result[0]['short_desc'],
                 loading:false
             });
+        }
+        }).catch(error=>{
+            this.setState({error:true, loading:false});
         })
     }
 
     render() {
-        if(this.state.loading===true){
+        if(this.state.loading===true  && this.state.error===false){
             return <Loader/>
-        }else{
+        }else if(this.state.loading===false  && this.state.error===false){
             return (
             <Fragment>
                 <Container fluid={true} className ="topFixedPage p-0">
@@ -114,6 +122,8 @@ export default class CourseDetails extends Component {
                 </Container>
             </Fragment>
             );
+        }else if(this.state.error===true){
+            return <Error/>
         } 
     }
 }

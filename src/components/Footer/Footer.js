@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 
 export default class Footer extends Component {
@@ -21,7 +22,8 @@ export default class Footer extends Component {
             youtube:"",
             footer_credit:"",
             loaderClass:"text-center",
-            mainDivClass:"d-none"
+            mainDivClass:"d-none",
+            error:false
         }
     }
 
@@ -29,6 +31,9 @@ export default class Footer extends Component {
         
 
         RestClient.GetRequest(AppUrl.FooterData).then(result =>{
+            if(result==null){
+                this.setState({error:true, loading:false});
+            }else{
             this.setState({
                 address: result[0]['address'],
                 email: result[0]['email'],
@@ -39,9 +44,17 @@ export default class Footer extends Component {
                 loaderClass:"d-none",
                 mainDivClass:"p-5  text-justify"
             });
-        });
+        }
+        }).catch(error=>{
+            this.setState({error:true, loading:false});
+        })
     }
     render() {
+        if(this.state.error===true){
+
+           return <Error/>
+            
+        }else if(this.state.error===false){
         return (
             <Fragment>
                 <Container fluid={true} className="footerSection">
@@ -87,6 +100,7 @@ export default class Footer extends Component {
                     <a className="copyRigtLink" href="#1">{this.state.footer_credit}</a>
                 </Container>
             </Fragment>
-        )
+        );
+    }
     }
 }

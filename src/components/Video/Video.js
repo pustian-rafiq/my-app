@@ -14,7 +14,7 @@ import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import ReactHtmlParser from 'react-html-parser';  
 import Loader from '../Loader/Loader';
-
+import Error from '../Error/Error';
 class Video extends Component {
 
     constructor(){
@@ -23,7 +23,8 @@ class Video extends Component {
             show: false,
             videoDescription:"",
             videoUrl:"",
-            loading:true
+            loading:true,
+            error:false
         }
     }
 
@@ -38,14 +39,18 @@ class Video extends Component {
         
 
         RestClient.GetRequest(AppUrl.HomeVideo).then(result =>{
+            if(result==null){
+                this.setState({error:true, loading:false});
+            }else{
             this.setState({videoDescription: result[0]['video_description'],videoUrl:result[0]['video_url'],loading:false});
+            }
         });
     }
 
     render() {
-        if(this.state.loading===true){
+        if(this.state.loading===true && this.state.error===false){
             return <Loader/>
-        }else{
+        }else if(this.state.loading===false && this.state.error===false){
             return (
                 <Fragment>
                     <Container className="text-center">
@@ -90,7 +95,9 @@ class Video extends Component {
                     </Modal>
                 </Fragment>
             );
-        }  
+        }else if(this.state.error===true){
+            return <Error/>
+        }    
     }
 }
 

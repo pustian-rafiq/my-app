@@ -5,6 +5,7 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import RestClient from '../../RestAPI/RestClient';
 import AppUrl from '../../RestAPI/AppUrl';
 import Loader from '../Loader/Loader';
+import Error from '../Error/Error';
 
 class ContactSection extends Component {
     constructor(){
@@ -14,7 +15,8 @@ class ContactSection extends Component {
             address:"",
             email:"",
             phone:"",
-            loading:true
+            loading:true,
+            error:false
             
         }
     }
@@ -23,13 +25,19 @@ class ContactSection extends Component {
         
 
         RestClient.GetRequest(AppUrl.FooterData).then(result =>{
+            if(result==null){
+                this.setState({error:true, loading:false});
+            }else{
             this.setState({
                 address: result[0]['address'],
                 email: result[0]['email'],
                 phone: result[0]['phone'],
                 loading:false
             });
-        });
+        }
+        }).catch(error=>{
+            this.setState({error:true, loading:false});
+        })
     }
     sendContact(){
         let name = document.getElementById("name").value;
@@ -44,9 +52,9 @@ class ContactSection extends Component {
         })
     }
     render() {
-        if(this.state.loading===true){
+        if(this.state.loading===true && this.state.error===false){
             return <Loader/>
-        }else{ 
+        }else if(this.state.loading===false && this.state.error===false){ 
         return (
             <Fragment>
                 <Container className="mt-5">
@@ -84,6 +92,8 @@ class ContactSection extends Component {
                 
             </Fragment>
         );
+    }else if(this.state.error===true){
+        return <Error/>
     }  
     }
 }
