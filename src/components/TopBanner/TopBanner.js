@@ -12,8 +12,8 @@ constructor(){
         title:"",
         subtitle:"",
         loaderClass:"text-center",
-        mainDivClass:"d-none",
-        errorClass:"d-none"
+        mainDivClass:"d-none",//hide this section
+        errorClass:"d-none" //hide this section
     }
 }
     componentDidMount(){

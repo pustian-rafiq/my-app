@@ -38,12 +38,12 @@ export default class AllCourses extends Component {
             const courseDataView = myList.map(myList=>{
  
              return  <Col lg={6} md={12} sm={12}  className="p-2">
-                        <Row>
-                            <Col lg={6} md={6} sm={12}>
+                        <Row className="p-3">
+                            <Col className="p-2" lg={6} md={6} sm={12}>
                                 <img className="courseImg" src={myList.small_img} alt="Course Logo" />
                             
                             </Col>
-                            <Col lg={6} md={6} sm={12}>
+                            <Col className="p-2" lg={6} md={6} sm={12}>
                             <h4 className="text-justify courseTitle">{myList.short_title}</h4>
                             <p className="text-justify courseDescription">{myList.short_des}</p>
                             <Link className="float-left courseDetails" to={"/course-details/"+myList.id} >Details</Link>
