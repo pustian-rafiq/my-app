@@ -1,6 +1,6 @@
 class AppUrl{
 
-static BaseUrl = 'http://laravelreact.epizy.com';
+static BaseUrl = 'http://laravelreact.epizy.com/';
 
 static ChartData = this.BaseUrl+'/chart-data';
 static ClientReview = this.BaseUrl+'/client-review';
