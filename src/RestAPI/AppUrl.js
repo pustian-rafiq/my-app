@@ -1,6 +1,6 @@
 class AppUrl{
 
-static BaseUrl = 'http://127.0.0.1:8000';
+static BaseUrl = 'http://laravelreact.epizy.com';
 
 static ChartData = this.BaseUrl+'/chart-data';
 static ClientReview = this.BaseUrl+'/client-review';
